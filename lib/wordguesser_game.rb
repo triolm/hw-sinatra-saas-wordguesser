@@ -19,8 +19,7 @@ class WordGuesserGame
 
     letter = letter.downcase
 
-    if letter.length != 1 then return false end
-
+    if (letter.length != 1) then return false end
 
     if @word.include?(letter) 
       if @guesses.include?(letter) then return false end
