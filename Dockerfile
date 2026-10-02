@@ -10,10 +10,10 @@ RUN gem install bundler -v "$BUNDLER_VERSION"
 WORKDIR /app
 
 # Set Rack/Sinatra to production environment
-ENV RACK_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development:test"
+# ENV RACK_ENV="production" \
+#     BUNDLE_DEPLOYMENT="1" \
+#     BUNDLE_PATH="/usr/local/bundle" \
+#     BUNDLE_WITHOUT="development:test"
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
@@ -47,4 +47,5 @@ USER sinatra:sinatra
 
 # Start the server by default, binding to 0.0.0.0 so Docker can map the port
 EXPOSE 3000
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "3000"]
+# CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "3000"]
+CMD ["/bin/bash"]
